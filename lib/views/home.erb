@@ -1,19 +1,23 @@
-<h2>Artists</h2>
-<table>
-  <tr>
-    <th>No.</th>
-    <th>Artist Name</th>
-  </tr>
-  <% @artists.each_with_index do |artist, index| %>
-  <tr>
-    <td>
-      <%= index + 1 %>
-    </td>
-    <td>
-      <a href="/artists/<%= artist['artist_id'] %>">
-        <%= artist['artist_name'] %>
-      </a>
-    </td>
-  </tr>
-  <% end %>
-</table>
+<section>
+  <div class='subheader'>
+    <h2>Artists</h2>
+  </div>
+  <table>
+    <tr>
+      <th>No.</th>
+      <th>Artist Name</th>
+    </tr>
+    <% @artists.each_with_index do |artist, index| %>
+    <tr>
+      <td>
+        <%= index + 1 %>
+      </td>
+      <td>
+        <a href="/artists/<%= artist['artist_id'] %>">
+          <%= artist['artist_name'] %>
+        </a>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</section>

@@ -1,9 +1,13 @@
-<h2>Track: <%= "#{@track_info['track_name']}" %></h2>
-<div>
-  <p>Artist: <%= "#{@track_info['artist_name']}" %></p>
-  <p>Composer: <%= "#{@track_info['composer']}" %></p>
-  <p>Album: <%= "#{@track_info['album_title']}" %></p>
-  <p>Genre: <%= "#{@track_info['genre_name']}" %></p>
-  <p>Length: <%= "#{(@track_info['track_length'].to_f / 60_000).round(2)}" %> minutes</p>
-  <p>Price: $<%= "#{@track_info['unit_price']}" %></p>
-</div>
+<section>
+  <div class='subheader'>
+    <h2><%= "#{@track_info['track_name']}" %></h2>
+  </div>
+  <div id='track-info'>
+    <p>Artist: <%= "#{@track_info['artist_name']}" %></p>
+    <p>Composer: <%= "#{@track_info['composer']}" %></p>
+    <p>Album: <%= "#{@track_info['album_title']}" %></p>
+    <p>Genre: <%= "#{@track_info['genre_name']}" %></p>
+    <p>Length: <%= "#{(@track_info['track_length'].to_f / 60_000).round(2)}" %> minutes</p>
+    <p>Price: $<%= "#{@track_info['unit_price']}" %></p>
+  </div>
+</section>

@@ -22,6 +22,10 @@ body {
   background-color: var(--main-bg-color);
   font-family: 'Courier New', Courier, monospace;
   color: var(--main-font-color);
+  position: absolute;
+  top: 75px;
+  width: 100%;
+  text-align: center;
 }
 
 a {
@@ -29,7 +33,67 @@ a {
   color: var(--link-font-color);
 }
 
+table {
+  margin: 20px auto;
+  width: 60%;
+}
+
 table, th, td {
   border-collapse: collapse;
   border: 2px solid var(--second-bg-color);
+  padding: 5px;
+}
+
+th {
+  font-family: 'Special Elite', cursive;
+  font-size: 2.2rem;
+  font-weight: 400;
+  padding: 10px 5px;
+}
+
+td {
+  text-align: left;
+  padding-left: 10px;
+  font-size: 2.2rem;
+  font-weight: 500;
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  min-height: 75px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--main-bg-color);
+}
+
+#header-title {
+  font-family: 'Limelight', cursive;
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.subheader {
+  margin: 20px auto;
+}
+
+.subheader h2 {
+  font-family: 'Special Elite', cursive;
+  font-size: 3rem;
+  font-weight: 500;
+  padding-bottom: 10px;
+}
+
+.subheader h3 {
+  font-family: 'Special Elite', cursive;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+#track-info p {
+  font-size: 2.6rem;
+  font-weight: 500;
+  margin-top: 20px;
 }
