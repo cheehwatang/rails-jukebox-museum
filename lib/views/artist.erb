@@ -1,0 +1,23 @@
+<h2>Artist: <%= "#{@albums[0]['artist_name']}" %></h2>
+<table>
+  <tr>
+    <th>No.</th>
+    <th>Album Name</th>
+    <th>Genre</th>
+  </tr>
+  <% @albums.each_with_index do |album, index| %>
+  <tr>
+    <td>
+      <%= index + 1 %>
+    </td>
+    <td>
+      <a href="/albums/<%= album['album_id'] %>">
+        <%= album['album_title'] %>
+      </a>
+    </td>
+    <td>
+      <%= album['genre'] %>
+    </td>
+  </tr>
+  <% end %>
+</table>
