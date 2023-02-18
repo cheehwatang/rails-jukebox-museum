@@ -1,6 +1,6 @@
 <section>
   <div class='subheader'>
-    <h2><%= "#{@albums[0]['artist_name']}" %></h2>
+    <h2><%= "#{@albums.first['artist_name']}" %></h2>
   </div>
   <table>
     <tr>
@@ -10,7 +10,7 @@
     </tr>
     <% @albums.each_with_index do |album, index| %>
     <tr>
-      <td>
+      <td class='fit'>
         <%= index + 1 %>
       </td>
       <td>

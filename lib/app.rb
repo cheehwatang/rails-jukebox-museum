@@ -1,29 +1,36 @@
 require "sinatra"
-require "sinatra/reloader" if development?
-require "pry-byebug"
-# require "better_errors"
 require "sqlite3"
-
-configure :development do
-  # use BetterErrors::Middleware
-  # BetterErrors.application_root = File.expand_path(__dir__)
-end
 
 DB = SQLite3::Database.new(File.join(File.dirname(__FILE__), "db/jukebox.sqlite"))
 
-get "/" do
-  # TODO: Gather all artists to be displayed on home page
+get '/' do
+  redirect '/home'
+end
+
+get "/home" do
+  search = params[:artist]
+  search_query = <<-SQL
+    WHERE UPPER(artists.name) LIKE UPPER(\"\%#{search}\%\")
+  SQL
   query = <<-SQL
     SELECT artists.id AS artist_id, artists.name AS artist_name
-    FROM artists
+    FROM albums
+    JOIN artists
+    ON albums.artist_id = artists.id #{search_query unless search.nil?}
+    GROUP BY artist_id
   SQL
+  p query
   DB.results_as_hash = true
   @artists = DB.execute(query)
+  session[:artist] = nil
   erb :home
 end
 
-# Then:
-# 1. Create an artist page with all the albums. Display genres as well
+post '/search_artist' do
+  artist = params[:artist]
+  redirect to("/home?artist=#{artist}")
+end
+
 get "/artists/:id" do
   query = <<-SQL
     SELECT artists.name AS artist_name,
@@ -42,7 +49,6 @@ get "/artists/:id" do
   erb :artist
 end
 
-# 2. Create an album pages with all the tracks
 get "/albums/:id" do
   query = <<-SQL
     SELECT albums.title AS album_title,
@@ -59,7 +65,6 @@ get "/albums/:id" do
   erb :album
 end
 
-# 3. Create a track page with all the track info
 get "/tracks/:id" do
   query = <<-SQL
     SELECT tracks.name AS track_name,
@@ -76,6 +81,6 @@ get "/tracks/:id" do
     WHERE tracks.id = #{params[:id]}
   SQL
   DB.results_as_hash = true
-  @track_info = DB.execute(query)[0]
+  @track_info = DB.execute(query).first
   erb :track
 end
