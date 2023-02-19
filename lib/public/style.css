@@ -124,3 +124,7 @@ td {
   min-height: 2em;
   min-width: 180px;
 }
+
+#youtube-iframe {
+  margin: 30px auto;
+}

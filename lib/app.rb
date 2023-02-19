@@ -7,6 +7,10 @@ get '/' do
   redirect '/home'
 end
 
+get '/iframe' do
+  erb :iframe
+end
+
 get "/home" do
   search = params[:artist]
   search_query = <<-SQL
