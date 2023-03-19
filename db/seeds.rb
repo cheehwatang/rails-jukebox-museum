@@ -30,5 +30,12 @@ Jukebox.create(name: 'better', user: curator)
 Jukebox.create(name: 'good', user: curator)
 
 puts "Creating artists..."
-Artist.create(name: 'The Beatles')
-Artist.create(name: 'Queen')
+beatles = Artist.create(name: 'The Beatles')
+queen = Artist.create(name: 'Queen')
+denver = Artist.create(name: 'John Denver')
+
+puts "Creating albums..."
+Album.create(title: 'Let It Be', artist: beatles)
+Album.create(title: 'Abbey Road', artist: beatles)
+Album.create(title: 'A Night At The Opera', artist: queen)
+Album.create(title: 'Rhymes & Reasons', artist: denver)
