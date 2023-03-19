@@ -28,3 +28,7 @@ puts "Creating jukeboxes..."
 Jukebox.create(name: 'best', user: curator)
 Jukebox.create(name: 'better', user: curator)
 Jukebox.create(name: 'good', user: curator)
+
+puts "Creating artists..."
+Artist.create(name: 'The Beatles')
+Artist.create(name: 'Queen')
