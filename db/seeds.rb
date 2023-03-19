@@ -18,3 +18,8 @@ Album.destroy_all
 
 puts "Destroying artists..."
 Artist.destroy_all
+
+puts "Creating users..."
+User.create(email: 'alice@alice.com', password: '123456', username: 'alice')
+User.create(email: 'bob@bob.com', password: '123456', username: 'bob', role: 'curator')
+User.create(email: 'carol@carol.com', password: '123456', username: 'carol', role: 'admin')
