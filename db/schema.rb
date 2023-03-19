@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_19_085036) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_19_112442) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,7 +39,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_19_085036) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_jukeboxes_on_name", unique: true
     t.index ["user_id"], name: "index_jukeboxes_on_user_id"
+  end
+
+  create_table "records", force: :cascade do |t|
+    t.bigint "jukebox_id", null: false
+    t.bigint "track_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["jukebox_id"], name: "index_records_on_jukebox_id"
+    t.index ["track_id"], name: "index_records_on_track_id"
   end
 
   create_table "tracks", force: :cascade do |t|
@@ -61,6 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_19_085036) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "role", default: "user", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
@@ -68,6 +79,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_19_085036) do
 
   add_foreign_key "albums", "artists"
   add_foreign_key "jukeboxes", "users"
+  add_foreign_key "records", "jukeboxes"
+  add_foreign_key "records", "tracks"
   add_foreign_key "tracks", "albums"
   add_foreign_key "tracks", "genres"
 end

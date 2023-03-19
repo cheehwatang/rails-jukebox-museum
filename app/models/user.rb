@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :jukeboxes, dependent: :destroy
 
-  validates :email, :password, :username, presence: true
+  validates :email, :password, :username, :role, presence: true
   validates :email, :username, uniqueness: { case_sensitive: false }
+  validates :role, inclusion: { in: %w[user curator admin] }
 end
