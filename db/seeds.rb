@@ -35,12 +35,22 @@ queen = Artist.create(name: 'Queen')
 denver = Artist.create(name: 'John Denver')
 
 puts "Creating albums..."
-Album.create(title: 'Let It Be', artist: beatles)
-Album.create(title: 'Abbey Road', artist: beatles)
-Album.create(title: 'A Night At The Opera', artist: queen)
-Album.create(title: 'Rhymes & Reasons', artist: denver)
+album1 = Album.create(title: 'Let It Be', artist: beatles)
+album2 = Album.create(title: 'Abbey Road', artist: beatles)
+album3 = Album.create(title: 'A Night At The Opera', artist: queen)
+album4 = Album.create(title: 'Rhymes & Reasons', artist: denver)
 
 puts "Creating genres..."
 pop = Genre.create(name: 'pop')
 rock = Genre.create(name: 'rock')
 country = Genre.create(name: 'country')
+
+puts "Creating tracks..."
+Track.create(title: "Let It Be", album: album1, genre: pop)
+Track.create(title: "Here Comes the Sun", album: album2, genre: pop)
+Track.create(title: "Come Together", album: album2, genre: pop)
+Track.create(title: "Love of My Life", album: album3, genre: rock)
+Track.create(title: "Bohemian Rhapsody", album: album3, genre: rock)
+Track.create(title: "Leaving on a Jet Plane", album: album4, genre: country)
+
+puts "Finished"
