@@ -39,3 +39,8 @@ Album.create(title: 'Let It Be', artist: beatles)
 Album.create(title: 'Abbey Road', artist: beatles)
 Album.create(title: 'A Night At The Opera', artist: queen)
 Album.create(title: 'Rhymes & Reasons', artist: denver)
+
+puts "Creating genres..."
+pop = Genre.create(name: 'pop')
+rock = Genre.create(name: 'rock')
+country = Genre.create(name: 'country')
