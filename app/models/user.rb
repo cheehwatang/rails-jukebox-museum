@@ -5,6 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :jukeboxes
+
   validates_presence_of %i[username role email]
   validates :email, uniqueness: true
 end
