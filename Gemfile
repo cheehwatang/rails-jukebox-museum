@@ -57,6 +57,8 @@ gem "pundit"
 
 # Use rspotify as wrapper for Spotify Web API
 gem 'rspotify'
+gem "omniauth-rails_csrf_protection"
+gem 'omniauth-spotify-oauth2', '~> 1.0'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
