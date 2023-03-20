@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root to: "pages#home"
   
   resources :jukeboxes, only: %i[show]
+
+  get '/auth/spotify/callback', to: 'users#spotify'
 end
